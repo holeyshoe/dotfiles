@@ -1,0 +1,18 @@
+Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Static { xpos = 0, ypos = 0, width = 1800, height = 18 }
+       , lowerOnStart = True
+       , commands = [Run Memory ["-t","<fc=#ee9a00>Mem:</fc> <usedratio>%"] 10
+			    , Run MultiCpu ["-t","<fc=#ee9a00>Cpu:</fc> <total0>% <total1>% <total2>% <total3>%"] 10
+			    , Run Network "eth0" ["-L","3","-H","60","--normal","green","--high","red", "-t", "<fc=#ee9a00><dev>:</fc> <rx>kB : <tx>kB"] 10
+                   , Run Swap ["-t","<fc=#ee9a00>Swap:</fc> <usedratio>%"] 10
+			    , Run DiskU [("sdc1", "<fc=#ee9a00>Storage:</fc> <usedp>%")] ["-L","20","-H","70","-h","red"] 20
+                   , Run Com "uname" ["-s","-r"] "" 36000
+                   , Run Date "%a %_d %b %Y %H:%M:%S" "date" 10
+			    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ %multicpu% | %eth0% | %disku% | %memory% - %swap% | <fc=#ee9a00>%date%</fc> "
+       }
