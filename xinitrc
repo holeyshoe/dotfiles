@@ -27,6 +27,7 @@ xset fp rehash
 
 # Start some programs
 nm-applet &
+volumeicon &
 dropbox start &
 pidgin &
 skype &

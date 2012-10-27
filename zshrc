@@ -11,7 +11,7 @@ autoload -Uz compinit promptinit colors && colors
 compinit
 promptinit
 
-PROMPT="%{$fg[blue]%}[%{$fg[green]%}%n%{$reset_color%}@%{$fg[white]%}%m %{$fg[yellow]%}%1~%{$fg[blue]%}]%{$fg[green]%}%#%{$reset_color%}"
+PROMPT="%{$fg[white]%}[%{$fg[green]%}%n%{$reset_color%}@%{$fg[white]%}%m %{$fg[yellow]%}%1~%{$fg[white]%}]%{$fg[green]%}%#%{$reset_color%}"
 
 # Exports
 export EDITOR=vim

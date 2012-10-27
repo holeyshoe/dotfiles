@@ -2,11 +2,13 @@
 Xcursor.theme:			 Vanilla-DMZ
 
 ! -- Colours -- !
+! xrdb -merge ~/.Xresources <- load changes, restart open terminals.
 !#include "/home/holeyshoe/.colors/zenburn"
 !#include "/home/holeyshoe/.colors/dark"
 !#include "/home/holeyshoe/.colors/unknown"
 #include "/home/holeyshoe/.colors/soft"
 !#include "/home/holeyshoe/.colors/reason"
+!#include "/home/holeyshoe/.colors/hybrid"
 
 ! -- urxvt colours -- !
 !URxvt.background: 	Black
