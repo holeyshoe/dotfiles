@@ -60,17 +60,18 @@ manageScratchPad = scratchpadManageHookDefault
 -- classNotRole doesnt work with skype, because it doesnt have WM_WINDOW_ROLE defined. Fuckers.
 
 myManageHook = composeAll
-	[ className =? "Gimp"			--> doFloat
-	, className =? "feh"			--> doFloat
-	, className =? "MPlayer"		--> doFloat
-	, className =? "Vlc"			--> doFloat
-	, className =? "Nm-connection-editor"	--> doFloat
-	, className =? "Xmessage"		--> doFloat
-	, className =? "Skype"			--> doShift	"2:chat"
-	, className =? "Pidgin"			--> doShift	"2:chat"
-	, classNotRole ("Pidgin", "buddy_list") --> doFloat
-	, role =? ("ConversationsWindow")	--> doFloat
-	, role =? ("CallWindow")		--> doFloat
+	[ className =? "Gimp"				 --> doFloat
+	, className =? "feh"				 --> doFloat
+	, className =? "MPlayer"				 --> doFloat
+	, className =? "Vlc"				 --> doFloat
+	, className =? "Nm-connection-editor"	 --> doFloat
+	, className =? "Xmessage"			 --> doFloat
+	, className =? "Skype"				 --> doShift	"2:chat"
+	, className =? "Pidgin"				 --> doShift	"2:chat"
+	, classNotRole ("Pidgin", "buddy_list")	 --> doFloat
+	, classNotRole ("Steam", "Steam")		 --> doFloat
+	, role =? ("ConversationsWindow")		 --> doFloat
+	, role =? ("CallWindow")				 --> doFloat
 	, insertPosition Above Newer
 	]
 	where

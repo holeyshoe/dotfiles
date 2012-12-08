@@ -8,7 +8,6 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
 			    , Run Network "eth0" ["-L","3","-H","60","--normal","green","--high","red", "-t", "<fc=#ee9a00><dev>:</fc> <rx>kB : <tx>kB"] 10
                    , Run Swap ["-t","<fc=#ee9a00>Swap:</fc> <usedratio>%"] 10
 			    , Run DiskU [("sdc1", "<fc=#ee9a00>Storage:</fc> <usedp>%")] ["-L","20","-H","70","-h","red"] 20
-                   , Run Com "uname" ["-s","-r"] "" 36000
                    , Run Date "%a %_d %b %Y %H:%M:%S" "date" 10
 			    , Run StdinReader
                     ]

@@ -21,7 +21,7 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # Configure X settings
 xrdb -merge ~/.Xresources &
 xsetroot -cursor_name left_ptr &
-xscreensaver -no-spash &
+#xscreensaver -no-spash &
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
@@ -41,9 +41,9 @@ DEFAULT_SESSION=xmonad
 
 case $1 in
 xmonad)
-	exec xmonad
+    exec xmonad
 	;;
 *)
-	exec $DEFAULT_SESSION
+    exec $DEFAULT_SESSION
 	;;
 esac

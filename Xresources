@@ -14,20 +14,17 @@ Xcursor.theme:			 Vanilla-DMZ
 !URxvt.background: 	Black
 !URxvt.foreground:	#2E64FE
 
-!*background: 	Black
-!*foreground:	#2E64FE
-!
 ! -- Scrollbar and clickable URLs -- !
 URxvt.scrollBar:		   false
-URxvt.perl-ext:      default,url-select,keyboard-select
-URxvt.url-select.launcher:   /usr/bin/chromium
+URxvt.perl-ext:		   default,url-select,keyboard-select
+URxvt.url-select.launcher:  /usr/bin/chromium
 URxvt.url-select.underline: true
 URxvt.keysym.M-Escape:	   perl:keyboard-select:activate
 URxvt.keysym.M-s:		   perl:keyboard-select:search
 URxvt.keysym.M-u:		   perl:url-select:select_next
 
 ! -- Transparency -- !
-URxvt.depth:		     24
-URxvt.tintColor:	     white
-URxvt.shading:		     40
-URxvt.transparent:	     true
+!URxvt.depth:		24
+!URxvt.tintColor:	white
+!URxvt.shading:	40
+!URxvt.transparent:	true
