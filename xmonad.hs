@@ -69,7 +69,6 @@ myManageHook = composeAll
 	, className =? "Skype"				 --> doShift	"2:chat"
 	, className =? "Pidgin"				 --> doShift	"2:chat"
 	, classNotRole ("Pidgin", "buddy_list")	 --> doFloat
-	, classNotRole ("Steam", "Steam")		 --> doFloat
 	, role =? ("ConversationsWindow")		 --> doFloat
 	, role =? ("CallWindow")				 --> doFloat
 	, insertPosition Above Newer

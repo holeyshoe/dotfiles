@@ -30,11 +30,16 @@ set tabstop=5
 " set expandtab
 
 " ==== Common Sense Stuff ====
-filetyp on
+filetype on
 filetype plugin on
 filetype plugin indent on
 syntax on
 
+" === Other stuff ===
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_ViewRule_pdf='mupdf'
 " set list listchars=tab:\·\ ,trail:·
 
 colorscheme tir_black 
