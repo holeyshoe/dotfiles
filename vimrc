@@ -35,12 +35,15 @@ filetype plugin on
 filetype plugin indent on
 syntax on
 
-" === Other stuff ===
+" === Latex ===
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='mupdf'
 " set list listchars=tab:\·\ ,trail:·
+
+" === SpellChecker ===
+let dialect='UK'
 
 colorscheme tir_black 
 " set background=dark

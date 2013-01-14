@@ -13,6 +13,8 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Scratchpad
 
+import XMonad.Actions.GridSelect
+
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.MultiColumns
 import XMonad.Layout.ResizableTile
@@ -106,6 +108,8 @@ myKeys (XConfig {modMask = mM}) = M.fromList $
 	, ((mM, xK_Print),			spawn "scrot -e 'mv $f ~/Dropbox/arch_stuff/screenshots'")
 	, ((mM, xK_p),				spawn "dmenu_run")
 	, ((mM, xK_s),				scratchpadSpawnActionTerminal myTerminal)
+	, ((mM, xK_d),				spawnSelected defaultGSConfig ["chromium","urxvt","uqm","steam","urxvt -e ranger"])
+	, ((mM, xK_g),				goToSelected defaultGSConfig)
 
 	-- Audio Keybinds: codes are in /usr/include/X11/XF86keysym.h
 
@@ -122,7 +126,7 @@ myKeys (XConfig {modMask = mM}) = M.fromList $
 	-- Xmonad Keys
 
 	, ((mM, xK_b),				sendMessage ToggleStruts)
-	, ((mM, xK_q),				spawn "killall xmobar trayer && xmonad --restart")
+	, ((mM, xK_q),				spawn "killall xmobar trayer;  xmonad --restart")
 	, ((mM, xK_a),				sendMessage MirrorShrink)
 	, ((mM, xK_z),				sendMessage MirrorExpand)
 	]
