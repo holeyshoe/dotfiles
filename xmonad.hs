@@ -108,7 +108,7 @@ myKeys (XConfig {modMask = mM}) = M.fromList $
 	, ((mM, xK_Print),			spawn "scrot -e 'mv $f ~/Dropbox/arch_stuff/screenshots'")
 	, ((mM, xK_p),				spawn "dmenu_run")
 	, ((mM, xK_s),				scratchpadSpawnActionTerminal myTerminal)
-	, ((mM, xK_d),				spawnSelected defaultGSConfig ["chromium","urxvt","uqm","steam","urxvt -e ranger"])
+	, ((mM, xK_d),				spawnSelected defaultGSConfig ["chromium","urxvt","uqm","steam","urxvt -e ranger","playonlinux"])
 	, ((mM, xK_g),				goToSelected defaultGSConfig)
 
 	-- Audio Keybinds: codes are in /usr/include/X11/XF86keysym.h
