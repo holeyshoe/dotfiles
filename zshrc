@@ -37,7 +37,7 @@ bindkey "\e[8~" end-of-line # End
 
 # Aliases
 alias ls='ls -h --color=auto'
-alias df='df -h'
+alias df='df -h | tail -n +2 | sort -rgk 5'
 alias cls='clear'
 alias ..='cd ..'
 alias pacman='pacman-color'
