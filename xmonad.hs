@@ -85,7 +85,7 @@ myManageHook = composeAll
 
 ------------------------------------------------------------------------
 -- Layout Hook
---
+
 myLayout = avoidStruts $ smartBorders $ onWorkspace "1:web" webLayout
 		       $ onWorkspace "2:chat" chatLayout
 		       $ standardLayout
@@ -104,6 +104,7 @@ myLayout = avoidStruts $ smartBorders $ onWorkspace "1:web" webLayout
 
 ------------------------------------------------------------------------
 -- Key bindings --
+
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys (XConfig {modMask = mM}) = M.fromList $
 	[ ((mM .|. shiftMask, xK_Escape), 	spawn "i3lock -i ~/backgrounds/i3lock/locked.png -c 000000 -n")
@@ -141,8 +142,15 @@ myKeys (XConfig {modMask = mM}) = M.fromList $
 main = do
   xmobarPipe <- spawnPipe "/usr/bin/xmobar ~/.xmobar"
   trayerPipe <- spawnPipe "/usr/bin/trayer --edge top --align left --margin 1800 --width 120 --widthtype pixel --height 18 --heighttype pixel --padding 1 --alpha 0 --tint 0x000000 --transparent true"
-  xmonad $ withUrgencyHook NoUrgencyHook defaults {
-	logHook = dynamicLogWithPP $ xmobarPP {
+  xmonad $ withUrgencyHook NoUrgencyHook defaultConfig {
+      terminal			 = myTerminal
+	, modMask			 = myModMask
+	, workspaces		 = myWorkspaces
+	, borderWidth 		 = myBorderWidth
+	, normalBorderColor	 = myNormalBorderColor
+	, focusedBorderColor = myFocusedBorderColor
+	, keys			 = \c -> myKeys c `M.union` keys defaultConfig c 
+	, logHook = dynamicLogWithPP $ xmobarPP {
 		  ppOutput = hPutStrLn xmobarPipe
 		, ppTitle = xmobarColor xmobarTitleColor "" .shorten 100
 		, ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
@@ -152,18 +160,4 @@ main = do
 	, manageHook = manageDocks <+> manageScratchPad <+> myManageHook <+> manageHook defaultConfig
 	, handleEventHook = fullscreenEventHook
 	, layoutHook = myLayout 
-	}
-
---------------------------------------------------------------------------
--- Default settings --
-
-defaults = defaultConfig {
-	-- simple stuff
-	  terminal		 = myTerminal
-	, modMask			 = myModMask
-	, workspaces		 = myWorkspaces
-	, borderWidth 		 = myBorderWidth
-	, normalBorderColor	 = myNormalBorderColor
-	, focusedBorderColor = myFocusedBorderColor
-	, keys			 = \c -> myKeys c `M.union` keys defaultConfig c 
 	}
