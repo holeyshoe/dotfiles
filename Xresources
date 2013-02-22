@@ -22,6 +22,7 @@ URxvt.url-select.underline: true
 URxvt.keysym.M-Escape:	   perl:keyboard-select:activate
 URxvt.keysym.M-s:		   perl:keyboard-select:search
 URxvt.keysym.M-u:		   perl:url-select:select_next
+URxvt.urgentOnBell:		   true
 
 ! -- Transparency -- !
 !URxvt.depth:		24

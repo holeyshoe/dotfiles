@@ -1,5 +1,5 @@
 " ==== General Settings ====
-"test
+call pathogen#infect()
 set nocompatible
 " syntax enable
 set nowrap

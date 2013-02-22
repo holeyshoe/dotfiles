@@ -8,6 +8,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.InsertPosition
+import XMonad.Hooks.UrgencyHook
 
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
@@ -18,6 +19,7 @@ import XMonad.Actions.GridSelect
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.MultiColumns
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.NoBorders
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -84,7 +86,7 @@ myManageHook = composeAll
 ------------------------------------------------------------------------
 -- Layout Hook
 --
-myLayout = avoidStruts $ onWorkspace "1:web" webLayout
+myLayout = avoidStruts $ smartBorders $ onWorkspace "1:web" webLayout
 		       $ onWorkspace "2:chat" chatLayout
 		       $ standardLayout
  where
@@ -129,6 +131,7 @@ myKeys (XConfig {modMask = mM}) = M.fromList $
 	, ((mM, xK_q),				spawn "killall xmobar trayer;  xmonad --restart")
 	, ((mM, xK_a),				sendMessage MirrorShrink)
 	, ((mM, xK_z),				sendMessage MirrorExpand)
+	, ((mM, xK_v),			     focusUrgent)
 	]
 
 
@@ -138,11 +141,12 @@ myKeys (XConfig {modMask = mM}) = M.fromList $
 main = do
   xmobarPipe <- spawnPipe "/usr/bin/xmobar ~/.xmobar"
   trayerPipe <- spawnPipe "/usr/bin/trayer --edge top --align left --margin 1800 --width 120 --widthtype pixel --height 18 --heighttype pixel --padding 1 --alpha 0 --tint 0x000000 --transparent true"
-  xmonad $ defaults {
+  xmonad $ withUrgencyHook NoUrgencyHook defaults {
 	logHook = dynamicLogWithPP $ xmobarPP {
 		  ppOutput = hPutStrLn xmobarPipe
 		, ppTitle = xmobarColor xmobarTitleColor "" .shorten 100
 		, ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
+		, ppUrgent = xmobarColor "yellow" "red"
 		, ppSep = " | "
 		}
 	, manageHook = manageDocks <+> manageScratchPad <+> myManageHook <+> manageHook defaultConfig
