@@ -1,7 +1,7 @@
 Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
        , bgColor = "black"
        , fgColor = "grey"
-       , position = Static { xpos = 0, ypos = 0, width = 1800, height = 18 }
+       , position = Static { xpos = 0, ypos = 0, width = 1700, height = 18 }
        , lowerOnStart = True
        , commands = [Run Memory ["-t","<fc=#ee9a00>Mem:</fc> <usedratio>%"] 10
 			    , Run MultiCpu ["-t","<fc=#ee9a00>Cpu:</fc> <total0>% <total1>% <total2>% <total3>%"] 10

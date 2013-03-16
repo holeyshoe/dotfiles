@@ -111,7 +111,7 @@ myKeys (XConfig {modMask = mM}) = M.fromList $
 	, ((mM, xK_Print),			spawn "scrot -e 'mv $f ~/Dropbox/arch_stuff/screenshots'")
 	, ((mM, xK_p),				spawn "dmenu_run")
 	, ((mM, xK_s),				scratchpadSpawnActionTerminal myTerminal)
-	, ((mM, xK_d),				spawnSelected defaultGSConfig ["chromium","urxvt","uqm","steam","urxvt -e ranger","playonlinux"])
+	, ((mM, xK_d),				spawnSelected defaultGSConfig ["chromium","urxvt","uqm","steam","urxvt -e  ranger","playonlinux"])
 	, ((mM, xK_g),				goToSelected defaultGSConfig)
 
 	-- Audio Keybinds: codes are in /usr/include/X11/XF86keysym.h
@@ -141,7 +141,7 @@ myKeys (XConfig {modMask = mM}) = M.fromList $
 
 main = do
   xmobarPipe <- spawnPipe "/usr/bin/xmobar ~/.xmobar"
-  trayerPipe <- spawnPipe "/usr/bin/trayer --edge top --align left --margin 1800 --width 120 --widthtype pixel --height 18 --heighttype pixel --padding 1 --alpha 0 --tint 0x000000 --transparent true"
+  trayerPipe <- spawnPipe "/usr/bin/trayer --edge top --align left --margin 1700 --width 220 --widthtype pixel --height 18 --heighttype pixel --padding 1 --alpha 0 --tint 0x000000 --transparent true"
   xmonad $ withUrgencyHook NoUrgencyHook defaultConfig {
       terminal			 = myTerminal
 	, modMask			 = myModMask

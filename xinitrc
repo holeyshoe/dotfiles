@@ -31,6 +31,7 @@ volumeicon &
 dropbox start &
 pidgin &
 skype &
+keepassx &
 
 # Add new WM's with:
 # window_manager)

@@ -12,9 +12,10 @@ compinit
 promptinit
 
 PROMPT="%{$fg[white]%}[%{$fg[green]%}%n%{$reset_color%}@%{$fg[white]%}%m %{$fg[yellow]%}%1~%{$fg[white]%}]%{$fg[green]%}%#%{$reset_color%}"
-
+PATH="$HOME/.cabal/bin:$PATH"
 # Exports
 export EDITOR=vim
+export editor=vim
 export BROWSER=chromium
 
 # Keybinds
