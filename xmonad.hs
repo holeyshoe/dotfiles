@@ -9,6 +9,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.SetWMName
 
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
@@ -112,7 +113,7 @@ myKeys (XConfig {modMask = mM}) = M.fromList $
 	, ((mM, xK_Print),			spawn "scrot -e 'mv $f ~/Dropbox/arch_stuff/screenshots'")
 	, ((mM, xK_p),				spawn "dmenu_run")
 	, ((mM, xK_s),				scratchpadSpawnActionTerminal myTerminal)
-	, ((mM, xK_d),				spawnSelected defaultGSConfig ["chromium","urxvt","uqm","steam",ranger,"playonlinux"])
+	, ((mM, xK_d),				spawnSelected defaultGSConfig ["chromium","urxvt","uqm","steam",ranger,"playonlinux","./bin/du.sh"])
 	, ((mM, xK_g),				goToSelected defaultGSConfig)
 
 	-- Audio Keybinds: codes are in /usr/include/X11/XF86keysym.h
@@ -151,6 +152,7 @@ main = do
 	, normalBorderColor	 = myNormalBorderColor
 	, focusedBorderColor = myFocusedBorderColor
 	, keys			 = \c -> myKeys c `M.union` keys defaultConfig c 
+	, startupHook = setWMName "LG3D"
 	, logHook = dynamicLogWithPP $ xmobarPP {
 		  ppOutput = hPutStrLn xmobarPipe
 		, ppTitle = xmobarColor xmobarTitleColor "" .shorten 100
